@@ -2,7 +2,7 @@
 /**
 Plugin Name: rest-api-cdn-replacer
 Plugin URI:  https://www.taiduplus.com/
-Description:  Modify/Append posts from origin url to CDN url.
+Description:  Modify/Append posts response value from origin url to CDN url.
 Author: Eric Tsao
 Version: 1.1
 License: GPLv2
@@ -12,7 +12,7 @@ register_activation_hook( __FILE__, 'plugin_install');
 
 require_once(dirname(__FILE__).'/plugins/admin-ui.php');
 
-// do_racr_update();
+do_racr_update();
 
 function plugin_install() {
   update_option( 'racr_opt_source_url', untrailingslashit(get_site_url()));

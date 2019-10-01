@@ -39,7 +39,7 @@
             <td><input type="text" name="racr_opt_replace" value="<?php echo esc_attr(get_option('racr_opt_replace')); ?>" /></td>
           </tr>
         </table>
-        <input type="hidden" name="action" value="racr_update" />
+        <input type="hidden" name="action" value="update" />
         <input type="hidden" name="page_options" value="racr_opt_source_url,racr_opt_target_url,racr_opt_replace" />
 
         <p class="submit">
