@@ -10,6 +10,10 @@ License: GPLv2
 
 register_activation_hook( __FILE__, 'plugin_install');
 
+require_once(dirname(__FILE__).'/plugins/admin-ui.php');
+
+// do_racr_update();
+
 function plugin_install() {
   update_option( 'racr_opt_source_url', untrailingslashit(get_site_url()));
   update_option( 'racr_opt_replace', 'true');
@@ -37,34 +41,3 @@ function dw_rest_prepare_post( $value, $post, $request ) {
 add_filter( 'rest_prepare_post', 'dw_rest_prepare_post', 10, 3 );
 
 ?>
-
-<div class="wrap">
-  <h2>rest api cnd replacer</h2>
-
-
-  <form method="post" action="options.php">
-    <?php wp_nonce_field('update-options'); ?>
-    
-    <table class="form-table">
-      <tr valign="top">
-        <th scope="row">Source URL</th>
-        <td><input type="text" name="racr_opt_source_url" value="<?php echo esc_attr(get_option('racr_opt_source_url')); ?>" /></td>
-      </tr>
-      <tr valign="top">
-        <th scope="row">Target URL</th>
-        <td><input type="text" name="racr_opt_target_url" value="<?php echo esc_attr(get_option('racr_opt_target_url')); ?>" /></td>
-      </tr>
-      <tr valign="top">
-        <th scope="row">Replace</th>
-        <td><input type="text" name="racr_opt_replace" value="<?php echo esc_attr(get_option('racr_opt_replace')); ?>" /></td>
-      </tr>
-    </table>
-    <input type="hidden" name="action" value="update" />
-    <input type="hidden" name="page_options" value="racr_opt_source_url,racr_opt_target_url" />
-
-    <p class="submit">
-      <input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
-    </p>
-  </form>
-
-</div>
